@@ -241,12 +241,12 @@ $result = $conn->query($sql);
                             if ($result->num_rows > 0) {
                                 while ($row = $result->fetch_assoc()) {
                                     echo '<tr class="bg-white">';
-                                    echo '<td class="py-2 px-4 border-r">' . $row["id"] . '</td>';
+                                    echo '<td class="py-2 px-4 border-r">' . $row["rol_id"] . '</td>';
                                     echo '<td class="py-2 px-4 border-r">' . $row["nombre"] . '</td>';
                                     echo '<td class="py-2 px-4 border-r">' . $row["correo"] . '</td>';
                                     echo '<td class="py-2 px-4 border-r">' . $row["direccion"] . '</td>';
                                     echo '<td class="py-2 px-4 border-r">' . $row["fecha_nacimiento"] . '</td>';
-                                    echo '<td class="py-2 px-4 border-r">' . $row["id"] . '</td>';
+                                    echo '<td class="py-2 px-4 border-r">' . $row["clase asignada"] . '</td>';
                                     echo '<td class="py-2 px-4 border-r flex flex-row">';
                                     echo '<button class="text-blue-500 hover:underline" onclick="openUpdateModal(this)">Editar</button>';
                                     echo '<button class="text-red-500 hover:underline ml-2">Eliminar</button>';
