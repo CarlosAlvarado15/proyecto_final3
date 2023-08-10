@@ -88,9 +88,10 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['rol_id'] != 1) {
 
                 <div class=" flex flex-row justify-between items-center">
 
-                    <button class="relative flex justify-center items-center group">
+                    <button id="buttonToggle" class="relative flex justify-center items-center group">
                         <p class="px-4"> administrador </p>
-                        <div class="absolute hidden group-focus:block top-full min-w-full w-max bg-white mt-1 rounded">
+                        <div id="toggleMenu" class=" absolute top-full min-w-full w-max bg-white mt-1 rounded hidden">
+
                             <ul class="text-left border none">
                                 <li class="px-4 py-1 border-b flex flex-row gap-3"> <span><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
                                             <g clip-path="url(#clip0_570_384)">
@@ -153,7 +154,11 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['rol_id'] != 1) {
 
     </div>
 
-
+    <script>
+        buttonToggle.addEventListener('click', () => {
+            toggleMenu.classList.toggle('hidden');
+        })
+    </script>
 
 
 
