@@ -15,6 +15,8 @@ function crear_usuario($correo, $dato_id)
 
         $mysqli->query($querycontra);
 
+        header('location: Adm_Das_Maes.php');
+
         exit();
     } catch (mysqli_sql_exception $e) {
         echo $e->getMessage();
