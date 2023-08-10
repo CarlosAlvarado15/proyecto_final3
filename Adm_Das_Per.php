@@ -132,11 +132,13 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
                     <div class="flex h-10 w-full  flex-row justify-between items-center">
                         <h1 class="text-xl"> Lista de Permisos</h1>
                         <div>
-                            <a href="#" class="bg-blue">Home</a>/
+                            <a href="AdmDashboard.php" class=" text-blue-500">Home</a>/
                             <span>permisos</span>
                         </div>
                     </div>
                 </div>
+
+                <!----- Modal Editar Permisos--->
                 <div class="hidden fixed inset-0  justify-center items-center z-50" id="modal">
                     <div class="bg-white p-8 rounded-lg shadow-md w-96">
                         <h2 class="text-2xl font-semibold mb-4">Editar Permisos</h2>
@@ -160,8 +162,8 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
                         </form>
                     </div>
                 </div>
-
-                <div class="container mx-auto p-8">
+                <!-------------- Tabla Informacion de Permisos--------------->
+                <div class="container mx-auto p-8 bg-white">
                     <h2 class="text-2xl font-semibold mb-4">Informacion de Permisos</h2>
                     <table class="w-full border">
                         <thead>

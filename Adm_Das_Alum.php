@@ -114,204 +114,199 @@ include('conecction.php');
                     <div class="flex h-10 w-full  flex-row justify-between items-center">
                         <h1 class="text-xl"> Lista de Alumno</h1>
                         <div>
-                            <a href="#" class="bg-blue">Home</a>/
+                            <a href="AdmDashboard.php" class=" text-blue-500">Home</a>/
                             <span>Alumnos</span>
                         </div>
                     </div>
                 </div>
 
+
+
+
+                <!-- HTML con el botón de agregar alumno y la tabla -->
                 <div class="max-w-4xl mx-auto p-8 bg-white rounded shadow-lg mt-8">
+                    <div class="flex justify-between mb-4">
+                        <h2 class="text-2xl font-semibold">Informacion Alumnos</h2>
+                        <!-- Botón para abrir el modal de agregar alumno -->
+                        <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 cursor-pointer" id="openModal">Agregar Alumno</button>
+                    </div>
 
-
-                    <!-- HTML con el botón de agregar alumno y la tabla -->
-                    <div class="max-w-4xl mx-auto p-8 bg-white rounded shadow-lg mt-8">
-                        <div class="flex justify-between mb-4">
-                            <h2 class="text-2xl font-semibold">Informacion Alumnos</h2>
-                            <!-- Botón para abrir el modal de agregar alumno -->
-                            <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 cursor-pointer" id="openModal">Agregar Alumno</button>
-                        </div>
-
-                        <!-- Modal de agregar alumno -->
-                        <div class="modal-overlay hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50">
-                            <div class="modal flex justify-center items-center h-screen">
-                                <div class="bg-white p-8 rounded shadow-lg w-1/2">
-                                    <h2 class="text-2xl font-semibold mb-4">Agregar Alumno</h2>
-                                    <form action="procesar_agregar_alumno.php" method="POST">
-                                        <div class="mb-4">
-                                            <label for="dni" class="block font-medium">DNI:</label>
-                                            <input type="text" id="dni" name="dni" placeholder="Ingresa la Matricula" class="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-300">
-                                        </div>
-                                        <div class="mb-4">
-                                            <label for="correo" class="block font-medium">Correo Electrónico:</label>
-                                            <input type="email" id="correo" name="correo" placeholder="Ingresa el email" class="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-300">
-                                        </div>
-                                        <div class="mb-4">
-                                            <label for="nombre" class="block font-medium">Nombre(s):</label>
-                                            <input type="text" id="nombre" name="nombre" placeholder="Ingresa Nombre(s)" class="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-300">
-                                        </div>
-                                        <div class="mb-4">
-                                            <label for="apellidos" class="block font-medium">Apellido(s):</label>
-                                            <input type="text" id="apellidos" name="apellidos" placeholder="Ingresa  Apellido(s)" class="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-300">
-                                        </div>
-                                        <div class="mb-4">
-                                            <label for="direccion" class="block font-medium">Dirección:</label>
-                                            <input type="text" id="direccion" name="direccion" placeholder="Ingresa la direccion" class="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-300">
-                                        </div>
-                                        <div class="mb-4">
-                                            <label for="fecha_nacimiento" class="block font-medium">Fecha de
-                                                Nacimiento:</label>
-                                            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" class="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-300">
-                                        </div>
-                                        <div class="flex justify-end gap-2 mt-6">
-                                            <button type="button" class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500" id="closeBtn">Cerrar</button>
-                                            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" id="createBtn">Crear</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Tabla de información de alumnos -->
-                        <!-- Tabla de información de alumnos -->
-                        <table class="w-full border-collapse border mt-4">
-                            <thead>
-                                <tr class="bg-gray-100">
-                                    <th class="py-2 px-4 border-r">#</th>
-                                    <th class="py-2 px-4 border-r">DNI</th>
-                                    <th class="py-2 px-4 border-r">Nombre</th>
-                                    <th class="py-2 px-4 border-r">Apellidos</th>
-                                    <th class="py-2 px-4 border-r">Correo</th>
-                                    <th class="py-2 px-4 border-r">Dirección</th>
-                                    <th class="py-2 px-4 border-r">Fec. Nacimiento</th>
-                                    <th class="py-2 px-4 border-r">Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                // Realiza una consulta SELECT para obtener los datos de los alumnos
-                                $query  = "SELECT `id_ud`,`dni`,`nombre`,`apellidos`, `correo`,`direccion`,`fecha_nacimiento` FROM usuarios_datos LEFT Join usuarios_login on id_ud = id_ul WHERE rol_id = 3;";
-                                $result = $mysqli->query($query);
-
-                                // Itera a través de los resultados y crea filas de tabla
-                                while ($row = $result->fetch_assoc()) {
-                                    echo "<tr class='bg-white'>";
-                                    echo "<td class='py-2 px-4 border-r'>" . $row['id_ud'] . "</td>";
-                                    echo "<td class='py-2 px-4 border-r'>" . $row['dni'] . "</td>";
-                                    echo "<td class='py-2 px-4 border-r'>" . $row['nombre'] . "</td>";
-                                    echo "<td class='py-2 px-4 border-r'>" . $row['apellidos'] . "</td>";
-                                    echo "<td class='py-2 px-4 border-r'>" . $row['correo'] . "</td>";
-                                    echo "<td class='py-2 px-4 border-r'>" . $row['direccion'] . "</td>";
-                                    echo "<td class='py-2 px-4 border-r'>" . $row['fecha_nacimiento'] . "</td>";
-                                    echo "<td class='py-2 px-4 border-r'>";
-                                    echo "<button class='text-blue-500 hover:underline' onclick='openUpdateModal(this)'>Editar</button>";
-                                    echo "<button class='text-red-500 hover:underline ml-2'>Eliminar</button>";
-                                    echo "</td>";
-                                    echo "</tr>";
-                                }
-
-                                // Liberar los resultados
-                                $result->free();
-                                ?>
-                            </tbody>
-                        </table>
-
-                        <!-- ... Otras partes de tu código ... -->
-
-                        <!-- Modal para actualizar alumno -->
-                        <div id="updateModal" class="hidden fixed top-0 left-0 w-full h-full flex justify-center items-center bg-opacity-50 bg-black">
+                    <!-- Modal de agregar alumno -->
+                    <div class="modal-overlay hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50">
+                        <div class="modal flex justify-center items-center h-screen">
                             <div class="bg-white p-8 rounded shadow-lg w-1/2">
-                                <h2 class="text-2xl font-semibold mb-4">Actualizar Alumno</h2>
-
-                                <!-- Formulario para actualizar alumno -->
-                                <form action="procesar_actualizar_alumno.php" method="POST">
-                                    <input type="hidden" id="updateId" name="updateId">
-                                    <div class="mb-2">
-                                        <label for="updateDni" class="block font-medium">DNI:</label>
-                                        <input type="int" id="updateDni" name="updateDni" placeholder="Ingresa la Matricula" class="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-300">
+                                <h2 class="text-2xl font-semibold mb-4">Agregar Alumno</h2>
+                                <form action="procesar_agregar_alumno.php" method="POST">
+                                    <div class="mb-4">
+                                        <label for="dni" class="block font-medium">DNI:</label>
+                                        <input type="text" id="dni" name="dni" placeholder="Ingresa la Matricula" class="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-300">
                                     </div>
-                                    <div class="mb-2">
-                                        <label for="updateCorreo" class="block font-medium">Correo Electrónico:</label>
-                                        <input type="email" id="updateCorreo" name="updateCorreo" placeholder="Ingresa el email" class="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-300">
+                                    <div class="mb-4">
+                                        <label for="correo" class="block font-medium">Correo Electrónico:</label>
+                                        <input type="email" id="correo" name="correo" placeholder="Ingresa el email" class="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-300">
                                     </div>
-                                    <div class="mb-2">
-                                        <label for="updateNombre" class="block font-medium">Nombre(s):</label>
-                                        <input type="text" id="updateNombre" name="updateNombre" placeholder="Ingresa Nombre(s)" class="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-300">
+                                    <div class="mb-4">
+                                        <label for="nombre" class="block font-medium">Nombre(s):</label>
+                                        <input type="text" id="nombre" name="nombre" placeholder="Ingresa Nombre(s)" class="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-300">
                                     </div>
-                                    <div class="mb-2">
-                                        <label for="updateApellidos" class="block font-medium">Apellido(s):</label>
-                                        <input type="text" id="updateApellidos" name="updateApellidos" placeholder="Ingresa  Apellido(s)" class="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-300">
+                                    <div class="mb-4">
+                                        <label for="apellidos" class="block font-medium">Apellido(s):</label>
+                                        <input type="text" id="apellidos" name="apellidos" placeholder="Ingresa  Apellido(s)" class="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-300">
                                     </div>
-                                    <div class="mb-2">
-                                        <label for="updateDireccion" class="block font-medium">Dirección:</label>
-                                        <input type="text" id="updateDireccion" name="updateDireccion" placeholder="Ingresa la direccion" class="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-300">
+                                    <div class="mb-4">
+                                        <label for="direccion" class="block font-medium">Dirección:</label>
+                                        <input type="text" id="direccion" name="direccion" placeholder="Ingresa la direccion" class="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-300">
                                     </div>
-                                    <div class="mb-2">
-                                        <label for="updateFechaNacimiento" class="block font-medium">Fecha de
+                                    <div class="mb-4">
+                                        <label for="fecha_nacimiento" class="block font-medium">Fecha de
                                             Nacimiento:</label>
-                                        <input type="date" id="updateFechaNacimiento" name="updateFechaNacimiento" class="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-300">
+                                        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" class="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-300">
                                     </div>
                                     <div class="flex justify-end gap-2 mt-6">
-                                        <button type="button" class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500" id="closeUpdateModal">Cerrar</button>
-                                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" id="updateBtn">Actualizar</button>
+                                        <button type="button" class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500" id="closeBtn">Cerrar</button>
+                                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" id="createBtn">Crear</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
 
-                    <script>
-                        const openModalBtn = document.getElementById('openModal');
-                        const modalOverlay = document.querySelector('.modal-overlay');
-                        const closeBtn = document.getElementById('closeBtn');
+                    <!-- Tabla de información de alumnos -->
+                    <!-- Tabla de información de alumnos -->
+                    <table class="w-full border-collapse border mt-4">
+                        <thead>
+                            <tr class="bg-gray-100">
+                                <th class="py-2 px-4 border-r">#</th>
+                                <th class="py-2 px-4 border-r">DNI</th>
+                                <th class="py-2 px-4 border-r">Nombre</th>
+                                <th class="py-2 px-4 border-r">Apellidos</th>
+                                <th class="py-2 px-4 border-r">Correo</th>
+                                <th class="py-2 px-4 border-r">Dirección</th>
+                                <th class="py-2 px-4 border-r">Fec. Nacimiento</th>
+                                <th class="py-2 px-4 border-r">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            // Realiza una consulta SELECT para obtener los datos de los alumnos
+                            $query  = "SELECT `id_ud`,`dni`,`nombre`,`apellidos`, `correo`,`direccion`,`fecha_nacimiento` FROM usuarios_datos LEFT Join usuarios_login on id_ud = id_ul WHERE rol_id = 3;";
+                            $result = $mysqli->query($query);
 
-                        openModalBtn.addEventListener('click', function() {
-                            modalOverlay.classList.remove('hidden');
-                        });
+                            // Itera a través de los resultados y crea filas de tabla
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<tr class='bg-white'>";
+                                echo "<td class='py-2 px-4 border-r'>" . $row['id_ud'] . "</td>";
+                                echo "<td class='py-2 px-4 border-r'>" . $row['dni'] . "</td>";
+                                echo "<td class='py-2 px-4 border-r'>" . $row['nombre'] . "</td>";
+                                echo "<td class='py-2 px-4 border-r'>" . $row['apellidos'] . "</td>";
+                                echo "<td class='py-2 px-4 border-r'>" . $row['correo'] . "</td>";
+                                echo "<td class='py-2 px-4 border-r'>" . $row['direccion'] . "</td>";
+                                echo "<td class='py-2 px-4 border-r'>" . $row['fecha_nacimiento'] . "</td>";
+                                echo "<td class='py-2 px-4 border-r'>";
+                                echo "<button class='text-blue-500 hover:underline' onclick='openUpdateModal(this)'>Editar</button>";
+                                echo "<button class='text-red-500 hover:underline ml-2'>Eliminar</button>";
+                                echo "</td>";
+                                echo "</tr>";
+                            }
 
-                        closeBtn.addEventListener('click', function() {
-                            modalOverlay.classList.add('hidden');
-                        });
+                            // Liberar los resultados
+                            $result->free();
+                            ?>
+                        </tbody>
+                    </table>
 
-                        function openUpdateModal(button) {
-                            const row = button.closest('tr');
-                            const id = row.cells[0].textContent;
-                            const dni = row.cells[1].textContent;
-                            const nombre = row.cells[2].textContent;
-                            const apellidos = row.cells[3].textContent;
-                            const correo = row.cells[4].textContent;
-                            const direccion = row.cells[5].textContent;
-                            const fechaNacimiento = row.cells[6].textContent;
+                    <!-- ... Otras partes de tu código ... -->
 
-                            // Rellenar el formulario de actualización con los datos de la fila
-                            document.getElementById('updateId').value = id;
-                            document.getElementById('updateDni').value = dni;
-                            document.getElementById('updateNombre').value = nombre;
-                            document.getElementById('updateApellidos').value = apellidos;
-                            document.getElementById('updateCorreo').value = correo;
-                            document.getElementById('updateDireccion').value = direccion;
-                            document.getElementById('updateFechaNacimiento').value = fechaNacimiento;
+                    <!-- Modal para actualizar alumno -->
+                    <div id="updateModal" class="hidden fixed top-0 left-0 w-full h-full flex justify-center items-center bg-opacity-50 bg-black">
+                        <div class="bg-white p-8 rounded shadow-lg w-1/2">
+                            <h2 class="text-2xl font-semibold mb-4">Actualizar Alumno</h2>
 
-                            // Mostrar el modal de actualización
-                            updateModal.classList.remove('hidden');
-                        }
+                            <!-- Formulario para actualizar alumno -->
+                            <form action="procesar_actualizar_alumno.php" method="POST">
+                                <input type="hidden" id="updateId" name="updateId">
+                                <div class="mb-2">
+                                    <label for="updateDni" class="block font-medium">DNI:</label>
+                                    <input type="int" id="updateDni" name="updateDni" placeholder="Ingresa la Matricula" class="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-300">
+                                </div>
+                                <div class="mb-2">
+                                    <label for="updateCorreo" class="block font-medium">Correo Electrónico:</label>
+                                    <input type="email" id="updateCorreo" name="updateCorreo" placeholder="Ingresa el email" class="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-300">
+                                </div>
+                                <div class="mb-2">
+                                    <label for="updateNombre" class="block font-medium">Nombre(s):</label>
+                                    <input type="text" id="updateNombre" name="updateNombre" placeholder="Ingresa Nombre(s)" class="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-300">
+                                </div>
+                                <div class="mb-2">
+                                    <label for="updateApellidos" class="block font-medium">Apellido(s):</label>
+                                    <input type="text" id="updateApellidos" name="updateApellidos" placeholder="Ingresa  Apellido(s)" class="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-300">
+                                </div>
+                                <div class="mb-2">
+                                    <label for="updateDireccion" class="block font-medium">Dirección:</label>
+                                    <input type="text" id="updateDireccion" name="updateDireccion" placeholder="Ingresa la direccion" class="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-300">
+                                </div>
+                                <div class="mb-2">
+                                    <label for="updateFechaNacimiento" class="block font-medium">Fecha de
+                                        Nacimiento:</label>
+                                    <input type="date" id="updateFechaNacimiento" name="updateFechaNacimiento" class="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-300">
+                                </div>
+                                <div class="flex justify-end gap-2 mt-6">
+                                    <button type="button" class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500" id="closeUpdateModal">Cerrar</button>
+                                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" id="updateBtn">Actualizar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    const openModalBtn = document.getElementById('openModal');
+                    const modalOverlay = document.querySelector('.modal-overlay');
+                    const closeBtn = document.getElementById('closeBtn');
+
+                    openModalBtn.addEventListener('click', function() {
+                        modalOverlay.classList.remove('hidden');
+                    });
+
+                    closeBtn.addEventListener('click', function() {
+                        modalOverlay.classList.add('hidden');
+                    });
+
+                    function openUpdateModal(button) {
+                        const row = button.closest('tr');
+                        const id = row.cells[0].textContent;
+                        const dni = row.cells[1].textContent;
+                        const nombre = row.cells[2].textContent;
+                        const apellidos = row.cells[3].textContent;
+                        const correo = row.cells[4].textContent;
+                        const direccion = row.cells[5].textContent;
+                        const fechaNacimiento = row.cells[6].textContent;
+
+                        // Rellenar el formulario de actualización con los datos de la fila
+                        document.getElementById('updateId').value = id;
+                        document.getElementById('updateDni').value = dni;
+                        document.getElementById('updateNombre').value = nombre;
+                        document.getElementById('updateApellidos').value = apellidos;
+                        document.getElementById('updateCorreo').value = correo;
+                        document.getElementById('updateDireccion').value = direccion;
+                        document.getElementById('updateFechaNacimiento').value = fechaNacimiento;
+
+                        // Mostrar el modal de actualización
+                        updateModal.classList.remove('hidden');
+                    }
 
 
 
-                        const updateModal = document.querySelector(
-                            '#updateModal'); // Obtener el elemento del modal de actualización
-                        const closeUpdateModal1 = document.querySelector('#closeUpdateModal');
-                        closeUpdateModal.addEventListener('click', function() {
-                            updateModal.classList.add('hidden'); // Ocultar el modal de actualización
-                        });
-                    </script>
-
-</body>
-
-</html>
-</section>
-</div>
-</div>
-
+                    const updateModal = document.querySelector(
+                        '#updateModal'); // Obtener el elemento del modal de actualización
+                    const closeUpdateModal1 = document.querySelector('#closeUpdateModal');
+                    closeUpdateModal.addEventListener('click', function() {
+                        updateModal.classList.add('hidden'); // Ocultar el modal de actualización
+                    });
+                </script>
+            </section>
+        </div>
+    </div>
 </body>
 
 </html>

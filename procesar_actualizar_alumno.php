@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mysqli->query("UPDATE usuarios_datos SET `nombre`='$nombre', `apellidos`='$apellidos', `direccion`='$direccion', `fecha_nacimiento`='$fecha_nacimiento' WHERE `id_ud`=$id");
 
 
-        // header('location: Adm_Das_Alum.php');
+        header('location: Adm_Das_Alum.php');
     } catch (mysqli_sql_exception $e) {
         echo $e->getMessage();
     }
