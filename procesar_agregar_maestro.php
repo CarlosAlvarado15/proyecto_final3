@@ -1,6 +1,7 @@
 <?php
 // Incluye el archivo de conexión
 include('conecction.php');
+include('defaulpassword.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -11,13 +12,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $apellidos = $_POST['apellidos'];
         $direccion = $_POST['direccion'];
         $fecha_nacimiento = $_POST['fecha_nacimiento'];
+        $materia = $_POST['clase_asignada'];
+        $newDate = date("d/m/Y", strtotime($originalDate));
 
-        // print_r($_POST);
 
         // Insertar los datos en la tabla usuarios_datos
-        $query = "INSERT INTO maestros (`correo`,`nombre`, `apellidos`,`direccion`, `fecha_nacimiento`, `rol_id`) VALUES ('$correo','$nombre', '$apellidos','$direccion',$fecha_nacimiento, 2)";
-        $resultado = $mysqli->query($query);
-        echo "Agregado con Exito";
+        // $query = "INSERT INTO usuarios_datos (`nombre`, `apellidos`,`direccion`, `fecha_nacimiento`, `rol_id`) VALUES ('$nombre', '$apellidos','$direccion',$fecha_nacimiento, 2)";
+        // $resultado = $mysqli->query($query);
+
+
+        // $query_id = 'Select max(id_ud) as datos_id from `usuarios_datos`';
+
+        // $result = $mysqli->query($query_id);
+
+        // $dato = $result->fetch_assoc();
+        // $dato_id = $dato['datos_id'];
+
+        // include('Asign_materia.php');
+        // crear_usuario($correo, $dato_id);
+
+
+
+
+        // header("location: Adm_Das_Maes.php");
 
 
         exit();

@@ -22,17 +22,16 @@
                 <div class="mt-6 space-y-2">
 
 
-                    <a href="maest_Dash_list.php" class="flex flex-row justify-center group">
+                    <button class="flex flex-row justify-center group">
                         <img src="./dist/imagenes/students.png" alt="" height="32px" width="32px">
                         <p class="px-4">Alumnos</p>
 
                         <div class="hidden group-focus:block top-full min-w-full w-max mt-1 rounded">
                             <ul class="text-left none align-bottom">
-                                <li class="px-4 py-1"><a href="maest_Dash_list.php"></a>Lista de Alumnos</li>
 
                             </ul>
                         </div>
-                    </a>
+                    </button>
 
                 </div>
             </div>
@@ -45,31 +44,22 @@
 
                 <div class=" flex flex-row justify-items-stretch">
 
-                    <button class="relative  flex flex-row items-center group">
+                    <a href="maestroDashboard.php" class="relative  flex flex-row items-center group">
 
                         <img src="/dist//imagenes//menu.jpeg" alt="icono menu" width="18px" height="18px px-2">
                         <p class="px-4"> Home </p>
-                        <div class="absolute hidden group-focus:block top-full min-w-full w-max bg-white  mt-1 rounded">
-                            <ul class="text-left border none">
 
-                                <li class=" px-4 py-1"> Alumnos</li>
-
-                            </ul>
-
-                        </div>
-
-                    </button>
+                    </a>
                 </div>
 
                 <div class=" flex flex-row justify-between items-center">
 
                     <button class="relative flex justify-center items-center group">
-                        <p class="px-4"> Maestro </p>
+                        <p class="px-4"> Administrador </p>
                         <div class="absolute hidden group-focus:block top-full min-w-full w-max bg-white mt-1 rounded">
                             <ul class="text-left border none">
-                                <a href="maest_Dash_perf.php"></a>
-                                <li class="px-4 py-1 border-b flex flex-row gap-3">
-                                    <span><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21"
+                                <li class="px-4 py-1 border-b flex flex-row gap-3"> <span><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="21" height="21"
                                             viewBox="0 0 21 21" fill="none">
                                             <g clip-path="url(#clip0_570_384)">
                                                 <path
@@ -82,8 +72,7 @@
                                                         transform="translate(0.643555 0.519287)" />
                                                 </clipPath>
                                             </defs>
-                                        </svg> </span> </i> <span> Perfil</span>
-                                </li>
+                                        </svg></span> </i> <span> Perfil</span> </li>
                                 <li class="px-4 py-1 border-b flex flex-row gap-3"> <svg
                                         xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
                                         fill="none">
@@ -114,35 +103,78 @@
 
                     <!-- top nav -->
                     <div class="flex h-10 w-full  flex-row justify-between items-center">
-                        <h1 class="text-xl"> Dashboard</h1>
+                        <h1 class="text-xl">Alumos de la clase Maestro</h1>
                         <div>
                             <a href="#" class="bg-blue">Home</a>/
-                            <span>Dashboard</span>
+                            <span>Maestro</span>
                         </div>
                     </div>
-
-
-
                 </div>
 
-                <div class="w-1/2 items-start">
-
-                    <div
-                        class="w-120 h-20 bg-white border border-gray-300 shadow-md flex flex-col justify-center items-start text-sm p-4">
-                        <p>Bienvenido!<br> Selecciona la acción que quieras realizar en las pestañas del menú de la
-                            izquierda</p>
+                <div class="bg-gray-100">
+                    <div class="container mx-auto p-4">
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="text-xl font-semibold">Alumnos de la clase</h2>
+                            <button class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Buscar</button>
+                        </div>
+                        <table class="w-full border-collapse border border-gray-300">
+                            <thead>
+                                <tr class="bg-gray-200">
+                                    <th class="py-2 px-4">#</th>
+                                    <th class="py-2 px-4">Nombre de Alumno</th>
+                                    <th class="py-2 px-4">Calificación</th>
+                                    <th class="py-2 px-4">Mensajes</th>
+                                    <th class="py-2 px-4">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Aquí se agregarán las filas de datos dinámicamente desde la base de datos -->
+                                <tr>
+                                    <td class="py-2 px-4">1</td>
+                                    <td class="py-2 px-4">Juan Pérez</td>
+                                    <td class="py-2 px-4">95</td>
+                                    <td class="py-2 px-4">3</td>
+                                    <td class="py-2 px-4">
+                                        <button class="bg-blue-500 text-white px-2 py-1 rounded">Editar</button>
+                                        <button class="bg-green-500 text-white px-2 py-1 rounded">Enviar
+                                            Mensaje</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-4">2</td>
+                                    <td class="py-2 px-4">María González</td>
+                                    <td class="py-2 px-4">85</td>
+                                    <td class="py-2 px-4">5</td>
+                                    <td class="py-2 px-4">
+                                        <button class="bg-blue-500 text-white px-2 py-1 rounded">Editar</button>
+                                        <button class="bg-green-500 text-white px-2 py-1 rounded">Enviar
+                                            Mensaje</button>
+                                    </td>
+                            </tbody>
+                        </table>
+                        <div class="mt-4 flex justify-center">
+                            <!-- Aquí puedes agregar la lógica de paginación para las diferentes vistas numeradas -->
+                        </div>
                     </div>
                 </div>
+
+
+
+
+
+
+
+
+
+
+
+
             </section>
         </div>
 
     </div>
 
 
-    <!--   
-    </div>
-
-    </div> -->
 
 
 </body>

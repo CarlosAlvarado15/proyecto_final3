@@ -17,22 +17,22 @@
                         width="50px" height="50px mb-">
                     <span class="block font-semibold text-gray-300">Universidad</span>
                 </div>
-                <div class="border-t border-white mb-2 pt-4 text-sm">Maestro <br> <span> Nombre</span></div>
-                <div class="border-t border-white pt-4 text-sm ">Menu Maestro</div>
+                <div class="border-t border-white mb-2 pt-4 text-sm">Alumno <br> <span> Nombre</span></div>
+                <div class="border-t border-white pt-4 text-sm ">Menu Alumno</div>
                 <div class="mt-6 space-y-2">
 
 
-                    <a href="maest_Dash_list.php" class="flex flex-row justify-center group">
-                        <img src="./dist/imagenes/students.png" alt="" height="32px" width="32px">
-                        <p class="px-4">Alumnos</p>
 
-                        <div class="hidden group-focus:block top-full min-w-full w-max mt-1 rounded">
-                            <ul class="text-left none align-bottom">
-                                <li class="px-4 py-1"><a href="maest_Dash_list.php"></a>Lista de Alumnos</li>
 
-                            </ul>
-                        </div>
-                    </a>
+                    <div class="  ">
+                        <ul class="">
+                            <li class=" "> Ver Calificaciones </li>
+
+                            <li class=" "> Administra tus Clases </li>
+                        </ul>
+
+                    </div>
+                    </button>
 
                 </div>
             </div>
@@ -45,31 +45,23 @@
 
                 <div class=" flex flex-row justify-items-stretch">
 
-                    <button class="relative  flex flex-row items-center group">
+                    <a href="AlumDashboard.php" class="relative  flex flex-row items-center group">
 
                         <img src="/dist//imagenes//menu.jpeg" alt="icono menu" width="18px" height="18px px-2">
                         <p class="px-4"> Home </p>
-                        <div class="absolute hidden group-focus:block top-full min-w-full w-max bg-white  mt-1 rounded">
-                            <ul class="text-left border none">
 
-                                <li class=" px-4 py-1"> Alumnos</li>
 
-                            </ul>
-
-                        </div>
-
-                    </button>
+                    </a>
                 </div>
 
                 <div class=" flex flex-row justify-between items-center">
 
                     <button class="relative flex justify-center items-center group">
-                        <p class="px-4"> Maestro </p>
+                        <p class="px-4"> Alumno Name </p>
                         <div class="absolute hidden group-focus:block top-full min-w-full w-max bg-white mt-1 rounded">
                             <ul class="text-left border none">
-                                <a href="maest_Dash_perf.php"></a>
-                                <li class="px-4 py-1 border-b flex flex-row gap-3">
-                                    <span><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21"
+                                <li class="px-4 py-1 border-b flex flex-row gap-3"> <span><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="21" height="21"
                                             viewBox="0 0 21 21" fill="none">
                                             <g clip-path="url(#clip0_570_384)">
                                                 <path
@@ -82,8 +74,7 @@
                                                         transform="translate(0.643555 0.519287)" />
                                                 </clipPath>
                                             </defs>
-                                        </svg> </span> </i> <span> Perfil</span>
-                                </li>
+                                        </svg></span> </i> <span> Perfil</span> </li>
                                 <li class="px-4 py-1 border-b flex flex-row gap-3"> <svg
                                         xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
                                         fill="none">
@@ -100,8 +91,8 @@
                                     </svg>Salir </li>
                             </ul>
                         </div>
-                        <img src="./dist//imagenes//downarrow_abajo_5820.png" alt="icono flecha" width="18px"
-                            height="18px">
+                        <img src="./dist//imagenes//downarrow_abajo_5820.png" alt="icono flecha" width="16px"
+                            height="16px">
                     </button>
                 </div>
 
@@ -114,37 +105,68 @@
 
                     <!-- top nav -->
                     <div class="flex h-10 w-full  flex-row justify-between items-center">
-                        <h1 class="text-xl"> Dashboard</h1>
+                        <h1 class="text-xl"> Esquema de Clases </h1>
                         <div>
-                            <a href="#" class="bg-blue">Home</a>/
-                            <span>Dashboard</span>
+                            <a href="AlumDashboard.php" class="bg-blue">Home</a>/
+                            <span>Alumnos</span>
                         </div>
                     </div>
-
-
-
                 </div>
-
-                <div class="w-1/2 items-start">
-
-                    <div
-                        class="w-120 h-20 bg-white border border-gray-300 shadow-md flex flex-col justify-center items-start text-sm p-4">
-                        <p>Bienvenido!<br> Selecciona la acción que quieras realizar en las pestañas del menú de la
-                            izquierda</p>
+                <div class="flex p-4 gap-2 flex-row justify-between">
+                    <div class="w-1/2 ">
+                        <h2 class="text-lg font-bold mb-2">Tus Materias Inscritas</h2>
+                        <div class="shadow-md rounded-lg overflow-hidden">
+                            <table class="w-full table-auto">
+                                <thead class="bg-gray-100">
+                                    <tr>
+                                        <th class="py-2 px-3 text-center">#</th>
+                                        <th class="py-2 px-3 text-center">Materia</th>
+                                        <th class="py-2 px-3 text-center">Darse de Baja</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="bg-white">
+                                        <td class="py-2 px-3 text-center">1</td>
+                                        <td class="py-2 px-3 text-center">Materia 1</td>
+                                        <td class="py-2 px-3 text-center"><a href="#" class="text-blue-500">Darse de
+                                                Baja</a></td>
+                                    </tr>
+                                    <tr class="bg-gray-50">
+                                        <td class="py-2 px-3 text-center">2</td>
+                                        <td class="py-2 px-3 text-center">Materia 2</td>
+                                        <td class="py-2 px-3 text-center"><a href="#" class="text-blue-500">Darse de
+                                                Baja</a></td>
+                                    </tr>
+                                    <tr class="bg-white">
+                                        <td class="py-2 px-3 text-center">3</td>
+                                        <td class="py-2 px-3 text-center">Materia 3</td>
+                                        <td class="py-2 px-3 text-center"><a href="#" class="text-blue-500">Darse de
+                                                Baja</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="w-1/4 pl-4">
+                        <h2 class="text-lg font-bold mb-2">Materias para inscribir</h2>
+                        <div class="shadow-md rounded-lg p-4 ">
+                            <label class="block font-semibold mb-2">Selecciona la(s) Clase(s) usa la tecla ctrl:</label>
+                            <select multiple class="w-full border rounded-lg p-2 mb-4">
+                                <option>Materia A</option>
+                                <option>Materia B</option>
+                                <option>Materia C</option>
+                                <option>Materia D</option>
+                                <!-- Agrega más opciones de materias aquí -->
+                            </select>
+                            <button class="bg-blue-500 text-white px-3 py-1 rounded-lg ">Inscribir</button>
+                        </div>
                     </div>
                 </div>
+
+
             </section>
         </div>
-
     </div>
-
-
-    <!--   
-    </div>
-
-    </div> -->
-
-
 </body>
 
 </html>
