@@ -1,3 +1,16 @@
+<?php
+
+session_start();
+
+if (!isset($_SESSION['user']) || $_SESSION['user']['rol_id'] != 2) {
+    header('Location: login.php');
+    // Redirigir si no se cumple la condición
+    exit();
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 

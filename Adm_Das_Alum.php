@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (!isset($_SESSION['user']) || $_SESSION['user']['rol_id'] != 1) {
+    header('Location: login.php');
+    // Redirigir si no se cumple la condición
+    exit();
+}
 //  archivo de conexión a la base de datos
 include('conecction.php');
 
@@ -74,7 +80,7 @@ include('conecction.php');
                 <div class=" flex flex-row justify-between items-center">
 
                     <button class="relative flex justify-center items-center group">
-                        <p class="px-4"> AdministradorName </p>
+                        <p class="px-4"> Administrador </p>
                         <div class="absolute hidden group-focus:block top-full min-w-full w-max bg-white mt-1 rounded">
                             <ul class="text-left border none">
                                 <li class="px-4 py-1 border-b flex flex-row gap-3"> <span><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
@@ -189,7 +195,7 @@ include('conecction.php');
                         <tbody>
                             <?php
                             // Realiza una consulta SELECT para obtener los datos de los alumnos
-                            $query  = "SELECT `id_ud`,`dni`,`nombre`,`apellidos`, `correo`,`direccion`,`fecha_nacimiento` FROM usuarios_datos LEFT Join usuarios_login on id_ud = id_ul WHERE rol_id = 3;";
+                            $query  = "SELECT `id_ud`,`dni`,`nombre`,`apellidos`, `correo`,`direccion`,`fecha_nacimiento` FROM usuarios_datos LEFT Join usuarios_login on id_ud = datos_id WHERE rol_id = 3;";
                             $result = $mysqli->query($query);
 
                             // Itera a través de los resultados y crea filas de tabla
